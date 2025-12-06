@@ -2,15 +2,149 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
- <link rel="stylesheet" href="style.css"><link/>
- <script src="app.js" charset="utf-8"></script>
-    <title>Jogo Da Memória</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memoria - One Piece</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h3>Score:<span id="result"></span></h3>
+    <!-- Tela Inicial -->
+    <div id="start-screen" class="screen active">
+        <div class="start-container">
+            <div class="logo">
+                <h1 class="game-title">Jogo da Memoria</h1>
+                <p class="subtitle">One Piece Edition</p>
+            </div>
 
-    <div class="grid">
-        
+            <div class="difficulty-select">
+                <h3>Escolha a Dificuldade</h3>
+                <div class="difficulty-buttons">
+                    <button class="btn-difficulty" data-difficulty="easy">
+                        <span class="diff-name">Facil</span>
+                        <span class="diff-info">4 pares</span>
+                    </button>
+                    <button class="btn-difficulty active" data-difficulty="medium">
+                        <span class="diff-name">Medio</span>
+                        <span class="diff-info">6 pares</span>
+                    </button>
+                    <button class="btn-difficulty" data-difficulty="hard">
+                        <span class="diff-name">Dificil</span>
+                        <span class="diff-info">8 pares</span>
+                    </button>
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn-primary">
+                Jogar
+            </button>
+
+            <button id="btn-leaderboard" class="btn-secondary">
+                Ver Placar
+            </button>
+        </div>
     </div>
+
+    <!-- Tela do Jogo -->
+    <div id="game-screen" class="screen">
+        <header class="game-header">
+            <div class="header-left">
+                <h1 class="header-title">One Piece Memory</h1>
+            </div>
+            <div class="header-center">
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span class="stat-label">Tempo</span>
+                        <span id="timer" class="stat-value">00:00</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Movimentos</span>
+                        <span id="moves" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Pares</span>
+                        <span id="pairs" class="stat-value">0/8</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="btn-restart" class="btn-icon" title="Reiniciar">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                    </svg>
+                </button>
+                <button id="btn-menu" class="btn-icon" title="Menu">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <div class="grid" id="game-grid"></div>
+        </main>
+
+        <footer class="game-footer">
+            <p>Criado por <strong>AlexandreHBP</strong> | One Piece Memory Game</p>
+        </footer>
+    </div>
+
+    <!-- Tela de Placar -->
+    <div id="leaderboard-screen" class="screen">
+        <div class="leaderboard-container">
+            <h2 class="leaderboard-title">Melhores Pontuacoes</h2>
+
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-tab="easy">Facil</button>
+                <button class="tab-btn" data-tab="medium">Medio</button>
+                <button class="tab-btn" data-tab="hard">Dificil</button>
+            </div>
+
+            <div class="leaderboard-list" id="leaderboard-list">
+                <!-- Preenchido via JavaScript -->
+            </div>
+
+            <button id="btn-back-menu" class="btn-secondary">
+                Voltar ao Menu
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Vitoria -->
+    <div id="victory-modal" class="modal">
+        <div class="modal-content victory-content">
+            <div class="confetti-container" id="confetti"></div>
+            <h2 class="victory-title">Parabens!</h2>
+            <p class="victory-subtitle">Voce encontrou todos os pares!</p>
+
+            <div class="victory-stats">
+                <div class="victory-stat">
+                    <span class="victory-stat-value" id="final-time">00:00</span>
+                    <span class="victory-stat-label">Tempo</span>
+                </div>
+                <div class="victory-stat">
+                    <span class="victory-stat-value" id="final-moves">0</span>
+                    <span class="victory-stat-label">Movimentos</span>
+                </div>
+            </div>
+
+            <div class="victory-name-input">
+                <label for="player-name">Seu nome:</label>
+                <input type="text" id="player-name" maxlength="15" placeholder="Jogador">
+            </div>
+
+            <div class="victory-buttons">
+                <button id="btn-save-score" class="btn-primary">Salvar Pontuacao</button>
+                <button id="btn-play-again" class="btn-secondary">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="app.js"></script>
 </body>
 </html>
