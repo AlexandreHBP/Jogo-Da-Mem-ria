@@ -62,6 +62,43 @@
     <div id="start-screen" class="screen active">
         <div class="start-container">
             <div class="logo">
+                <!-- Straw Hat Jolly Roger Icon -->
+                <div class="jolly-roger">
+                    <svg viewBox="0 0 100 100" class="jolly-roger-svg">
+                        <!-- Skull -->
+                        <ellipse cx="50" cy="40" rx="28" ry="25" fill="#fff"/>
+                        <ellipse cx="50" cy="45" rx="20" ry="12" fill="#fff"/>
+                        <!-- Eyes -->
+                        <ellipse cx="40" cy="38" rx="6" ry="7" fill="#000"/>
+                        <ellipse cx="60" cy="38" rx="6" ry="7" fill="#000"/>
+                        <!-- Nose -->
+                        <ellipse cx="50" cy="48" rx="3" ry="4" fill="#000"/>
+                        <!-- Smile -->
+                        <path d="M 35 55 Q 50 65 65 55" stroke="#000" stroke-width="3" fill="none"/>
+                        <!-- Teeth -->
+                        <rect x="42" y="54" width="4" height="6" fill="#fff" stroke="#000" stroke-width="1"/>
+                        <rect x="48" y="54" width="4" height="6" fill="#fff" stroke="#000" stroke-width="1"/>
+                        <rect x="54" y="54" width="4" height="6" fill="#fff" stroke="#000" stroke-width="1"/>
+                        <!-- Straw Hat -->
+                        <ellipse cx="50" cy="22" rx="35" ry="10" fill="#8B4513"/>
+                        <ellipse cx="50" cy="18" rx="25" ry="15" fill="#DAA520"/>
+                        <path d="M 25 18 Q 50 5 75 18" stroke="#8B4513" stroke-width="3" fill="none"/>
+                        <line x1="30" y1="16" x2="30" y2="22" stroke="#8B4513" stroke-width="1"/>
+                        <line x1="40" y1="14" x2="40" y2="20" stroke="#8B4513" stroke-width="1"/>
+                        <line x1="50" y1="13" x2="50" y2="19" stroke="#8B4513" stroke-width="1"/>
+                        <line x1="60" y1="14" x2="60" y2="20" stroke="#8B4513" stroke-width="1"/>
+                        <line x1="70" y1="16" x2="70" y2="22" stroke="#8B4513" stroke-width="1"/>
+                        <!-- Red Band -->
+                        <rect x="25" y="19" width="50" height="4" fill="#DC143C" rx="2"/>
+                        <!-- Crossbones -->
+                        <line x1="15" y1="70" x2="85" y2="90" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                        <line x1="85" y1="70" x2="15" y2="90" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                        <circle cx="15" cy="70" r="5" fill="#fff"/>
+                        <circle cx="85" cy="70" r="5" fill="#fff"/>
+                        <circle cx="15" cy="90" r="5" fill="#fff"/>
+                        <circle cx="85" cy="90" r="5" fill="#fff"/>
+                    </svg>
+                </div>
                 <h1 class="game-title">Jogo da Memoria</h1>
                 <p class="subtitle">One Piece Edition</p>
             </div>
@@ -98,6 +135,19 @@
     <div id="game-screen" class="screen">
         <header class="game-header">
             <div class="header-left">
+                <div class="header-logo">
+                    <svg viewBox="0 0 100 100" class="header-skull-svg">
+                        <ellipse cx="50" cy="40" rx="28" ry="25" fill="#fff"/>
+                        <ellipse cx="50" cy="45" rx="20" ry="12" fill="#fff"/>
+                        <ellipse cx="40" cy="38" rx="6" ry="7" fill="#000"/>
+                        <ellipse cx="60" cy="38" rx="6" ry="7" fill="#000"/>
+                        <ellipse cx="50" cy="48" rx="3" ry="4" fill="#000"/>
+                        <path d="M 35 55 Q 50 65 65 55" stroke="#000" stroke-width="3" fill="none"/>
+                        <ellipse cx="50" cy="22" rx="35" ry="10" fill="#8B4513"/>
+                        <ellipse cx="50" cy="18" rx="25" ry="15" fill="#DAA520"/>
+                        <rect x="25" y="19" width="50" height="4" fill="#DC143C" rx="2"/>
+                    </svg>
+                </div>
                 <h1 class="header-title">One Piece Memory</h1>
             </div>
             <div class="header-center">
@@ -142,6 +192,24 @@
     <!-- Tela de Placar -->
     <div id="leaderboard-screen" class="screen">
         <div class="leaderboard-container">
+            <div class="leaderboard-icon">
+                <svg viewBox="0 0 100 100" class="crown-svg">
+                    <!-- Crown Base -->
+                    <rect x="20" y="60" width="60" height="20" fill="#FFD700" stroke="#B8860B" stroke-width="2" rx="3"/>
+                    <!-- Crown Points -->
+                    <polygon points="20,60 10,35 30,50 50,20 70,50 90,35 80,60" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+                    <!-- Jewels -->
+                    <circle cx="50" cy="35" r="6" fill="#DC143C"/>
+                    <circle cx="30" cy="45" r="4" fill="#1E90FF"/>
+                    <circle cx="70" cy="45" r="4" fill="#1E90FF"/>
+                    <!-- Crown Gems on Base -->
+                    <circle cx="35" cy="70" r="4" fill="#DC143C"/>
+                    <circle cx="50" cy="70" r="4" fill="#32CD32"/>
+                    <circle cx="65" cy="70" r="4" fill="#DC143C"/>
+                    <!-- Shine -->
+                    <ellipse cx="25" cy="65" rx="2" ry="3" fill="rgba(255,255,255,0.5)"/>
+                </svg>
+            </div>
             <h2 class="leaderboard-title">Melhores Pontuacoes</h2>
 
             <div class="leaderboard-tabs">
@@ -164,6 +232,23 @@
     <div id="victory-modal" class="modal">
         <div class="modal-content victory-content">
             <div class="confetti-container" id="confetti"></div>
+            <div class="victory-icon">
+                <svg viewBox="0 0 100 100" class="trophy-svg">
+                    <!-- Trophy Cup -->
+                    <path d="M 30 25 L 30 50 Q 30 70 50 75 Q 70 70 70 50 L 70 25 Z" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+                    <!-- Trophy Handles -->
+                    <path d="M 30 30 Q 15 30 15 45 Q 15 55 30 55" fill="none" stroke="#FFD700" stroke-width="6"/>
+                    <path d="M 70 30 Q 85 30 85 45 Q 85 55 70 55" fill="none" stroke="#FFD700" stroke-width="6"/>
+                    <!-- Trophy Base -->
+                    <rect x="40" y="75" width="20" height="8" fill="#B8860B"/>
+                    <rect x="35" y="83" width="30" height="5" fill="#8B4513"/>
+                    <rect x="30" y="88" width="40" height="7" fill="#654321"/>
+                    <!-- Star on Trophy -->
+                    <polygon points="50,35 53,44 63,44 55,50 58,60 50,54 42,60 45,50 37,44 47,44" fill="#fff"/>
+                    <!-- Shine -->
+                    <ellipse cx="40" cy="40" rx="3" ry="5" fill="rgba(255,255,255,0.5)"/>
+                </svg>
+            </div>
             <h2 class="victory-title">Parabens!</h2>
             <p class="victory-subtitle">Voce encontrou todos os pares!</p>
 

@@ -136,6 +136,76 @@ body::before {
     margin-bottom: 40px;
 }
 
+/* Jolly Roger Icon */
+.jolly-roger {
+    margin-bottom: 20px;
+    animation: floatJollyRoger 3s ease-in-out infinite;
+}
+
+.jolly-roger-svg {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes floatJollyRoger {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* Header Logo */
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-skull-svg {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Victory Icon */
+.victory-icon {
+    margin-bottom: 15px;
+}
+
+.trophy-svg {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.5));
+    animation: trophyBounce 1s ease-in-out infinite;
+}
+
+@keyframes trophyBounce {
+    0%, 100% { transform: scale(1) rotate(-3deg); }
+    50% { transform: scale(1.1) rotate(3deg); }
+}
+
+/* Leaderboard Icon */
+.leaderboard-icon {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.crown-svg {
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(0 3px 10px rgba(255, 215, 0, 0.4));
+    animation: crownShine 2s ease-in-out infinite;
+}
+
+@keyframes crownShine {
+    0%, 100% { filter: drop-shadow(0 3px 10px rgba(255, 215, 0, 0.4)); }
+    50% { filter: drop-shadow(0 5px 20px rgba(255, 215, 0, 0.8)); }
+}
+
 .game-title {
     font-family: var(--font-pirate);
     font-size: clamp(2.5rem, 8vw, 4.5rem);
