@@ -264,10 +264,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleCardClick(cardElement, index) {
-        // Ignore if locked or card already flipped/matched
-        if (gameState.isLocked) return;
+        // Ignore if card already flipped or matched
         if (cardElement.classList.contains('flipped')) return;
         if (cardElement.classList.contains('matched')) return;
+
+        // If there are 2 unmatched cards showing, hide them immediately and flip the new one
+        if (gameState.flippedCards.length === 2) {
+            // Immediately hide the previous two cards
+            const [card1, card2] = gameState.flippedCards;
+            card1.element.classList.remove('flipped', 'no-match');
+            card2.element.classList.remove('flipped', 'no-match');
+            gameState.flippedCards = [];
+            gameState.isLocked = false;
+        }
 
         // Start timer on first click
         if (!gameState.gameStarted) {
@@ -300,8 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkForMatch() {
-        gameState.isLocked = true;
-
         const [card1, card2] = gameState.flippedCards;
         const isMatch = card1.name === card2.name;
 
@@ -313,41 +320,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleMatch(card1, card2) {
-        setTimeout(() => {
-            card1.element.classList.add('matched');
-            card2.element.classList.add('matched');
+        // Mark as matched immediately
+        card1.element.classList.add('matched');
+        card2.element.classList.add('matched');
 
-            AudioManager.playMatch();
-            showToast('Par encontrado!', 'match');
+        AudioManager.playMatch();
+        showToast('Par encontrado!', 'match');
 
-            gameState.matchedPairs++;
-            updateStats();
+        gameState.matchedPairs++;
+        updateStats();
 
-            gameState.flippedCards = [];
-            gameState.isLocked = false;
+        // Clear flipped cards - they are now matched
+        gameState.flippedCards = [];
 
-            // Check for victory
-            if (gameState.matchedPairs === gameState.totalPairs) {
-                handleVictory();
-            }
-        }, CONFIG.matchDelay);
+        // Check for victory
+        if (gameState.matchedPairs === gameState.totalPairs) {
+            handleVictory();
+        }
     }
 
     function handleNoMatch(card1, card2) {
-        setTimeout(() => {
-            card1.element.classList.add('no-match');
-            card2.element.classList.add('no-match');
+        // Add no-match animation class
+        card1.element.classList.add('no-match');
+        card2.element.classList.add('no-match');
 
-            AudioManager.playNoMatch();
+        AudioManager.playNoMatch();
 
-            setTimeout(() => {
-                card1.element.classList.remove('flipped', 'no-match');
-                card2.element.classList.remove('flipped', 'no-match');
-
-                gameState.flippedCards = [];
-                gameState.isLocked = false;
-            }, CONFIG.flipDelay);
-        }, CONFIG.matchDelay);
+        // Don't lock - allow user to click another card immediately
+        // The cards will be hidden when the user clicks a new card
+        gameState.isLocked = false;
     }
 
     function updateStats() {
