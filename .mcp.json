@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kanban-api": {
+      "type": "http",
+      "url": "https://kanban.devmania.ai/api/mcp"
+    }
+  }
+}
